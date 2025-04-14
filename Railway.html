@@ -1,0 +1,1028 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Varanasi Railway Construction Cost Estimation</title>
+    <style>
+        .profile-card {
+            max-width: 600px;
+            width: 100%;
+            padding: 30px;
+            border-radius: 10px;
+            background-color: white;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            margin: 20px auto;
+        }
+
+        .profile-photo-container {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 20px;
+            border-radius: 50%;
+            padding: 5px;
+            border: 2px solid #e0e0e0;
+            overflow: hidden;
+            background-color: #f8f8f8;
+        }
+
+        .profile-photo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .profile-name {
+            font-size: 32px;
+            font-weight: 600;
+            color: #e31b4d;
+            margin-bottom: 12px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .profile-title {
+            font-size: 20px;
+            font-weight: 500;
+            color: #333;
+            margin-bottom: 6px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .profile-department {
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 15px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* Add this section for page layout if needed */
+        .page-container {
+            background-color: #154785;
+            color: white;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .content-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .info-section {
+            flex: 1;
+            min-width: 250px;
+            padding: 20px;
+        }
+
+        .profile-section {
+            flex: 2;
+            min-width: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .contact-section {
+            flex: 1;
+            min-width: 250px;
+            padding: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .content-wrapper {
+                flex-direction: column;
+            }
+
+            .info-section,
+            .contact-section {
+                text-align: center;
+            }
+        }
+
+        :root {
+            --primary: #1a4789;
+            --secondary: #f0f4f8;
+            --accent: #ff6b35;
+            --text: #333;
+            --light-text: #666;
+            --success: #28a745;
+            --warning: #ffc107;
+            --danger: #dc3545;
+            --border: #ddd;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            color: var(--text);
+            background-color: #f5f7fa;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        header {
+            background-color: var(--primary);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s;
+        }
+
+        nav ul li a:hover {
+            opacity: 0.8;
+        }
+
+        .dashboard {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 2rem 0;
+            gap: 1.5rem;
+        }
+
+        .project-info {
+            background-color: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            flex: 1 1 100%;
+        }
+
+        .project-info h2 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .project-meta {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        .meta-item {
+            margin-bottom: 0.5rem;
+        }
+
+        .meta-label {
+            font-weight: 600;
+            color: var(--light-text);
+            font-size: 0.9rem;
+        }
+
+        .meta-value {
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        .estimation-form {
+            flex: 1 1 65%;
+            background-color: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        .cost-summary {
+            flex: 1 1 30%;
+            background-color: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            height: fit-content;
+        }
+
+        .form-section {
+            margin-bottom: 2rem;
+        }
+
+        .form-section h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            font-size: 1rem;
+            transition: border 0.3s;
+        }
+
+        input:focus,
+        select:focus {
+            border-color: var(--primary);
+            outline: none;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #0f3973;
+        }
+
+        .btn-block {
+            display: block;
+            width: 100%;
+        }
+
+        .btn-secondary {
+            background-color: var(--secondary);
+            color: var(--text);
+            border: 1px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+            background-color: #e1e8f0;
+        }
+
+        .result-section {
+            background-color: var(--secondary);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+        }
+
+        .cost-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .cost-item:last-child {
+            border-bottom: none;
+        }
+
+        .cost-label {
+            font-weight: 500;
+        }
+
+        .total-cost {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-top: 1rem;
+            text-align: center;
+            padding: 1rem;
+            background-color: var(--secondary);
+            border-radius: 4px;
+        }
+
+        .chart-container {
+            margin-top: 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .chart-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        .chart-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .phase-selection {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .phase-btn {
+            padding: 0.5rem 1rem;
+            background-color: var(--secondary);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .phase-btn.active {
+            background-color: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        footer {
+            background-color: var(--primary);
+            color: white;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .footer-section {
+            flex: 1 1 300px;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 0.5rem;
+            display: block;
+            text-decoration: none;
+        }
+
+        .footer-section a:hover {
+            color: white;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        @media screen and (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            nav ul {
+                margin-top: 1rem;
+                justify-content: center;
+            }
+
+            nav ul li {
+                margin: 0 0.75rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M4 15.5V7.5C4 6.67157 4.67157 6 5.5 6H18.5C19.3284 6 20 6.67157 20 7.5V15.5C20 16.3284 19.3284 17 18.5 17H5.5C4.67157 17 4 16.3284 4 15.5Z"
+                            stroke="white" stroke-width="2" />
+                        <path d="M4 10H20" stroke="white" stroke-width="2" />
+                        <path d="M7 17V19" stroke="white" stroke-width="2" stroke-linecap="round" />
+                        <path d="M17 17V19" stroke="white" stroke-width="2" stroke-linecap="round" />
+                        <path d="M5 19H19" stroke="white" stroke-width="2" />
+                    </svg>
+                    <span>Varanasi Railway Cost Estimator</span>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#">Dashboard</a></li>
+                        <li><a href="#">Projects</a></li>
+                        <li><a href="#">Reports</a></li>
+                        <li><a href="#">Settings</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="project-info">
+            <h2>Project Overview</h2>
+            <div class="project-meta">
+                <div class="meta-item">
+                    <div class="meta-label">Project Name</div>
+                    <div class="meta-value">Varanasi Railway Development Project</div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-label">Location</div>
+                    <div class="meta-value">Varanasi, Uttar Pradesh</div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-label">Start Date</div>
+                    <div class="meta-value">15 May, 2025</div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-label">Estimated Completion</div>
+                    <div class="meta-value">30 June, 2027</div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-label">Project Status</div>
+                    <div class="meta-value" style="color: var(--success);">Active</div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-label">Last Updated</div>
+                    <div class="meta-value">14 April, 2025</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="dashboard">
+            <div class="estimation-form">
+                <div class="phase-selection">
+                    <button class="phase-btn active">All Phases</button>
+                    <button class="phase-btn">Phase 1</button>
+                    <button class="phase-btn">Phase 2</button>
+                    <button class="phase-btn">Phase 3</button>
+                </div>
+
+                <div class="form-section">
+                    <h3>Track Infrastructure</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="standard-track-length">Standard Track Length (km)</label>
+                            <input type="number" id="standard-track-length" value="28" min="0" step="0.1">
+                        </div>
+                        <div class="form-group">
+                            <label for="standard-track-cost">Standard Track Cost (Lakhs per km)</label>
+                            <input type="number" id="standard-track-cost" value="850" min="0">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="elevated-track-length">Elevated Track Length (km)</label>
+                            <input type="number" id="elevated-track-length" value="12" min="0" step="0.1">
+                        </div>
+                        <div class="form-group">
+                            <label for="elevated-track-cost">Elevated Track Cost (Lakhs per km)</label>
+                            <input type="number" id="elevated-track-cost" value="1500" min="0">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="underground-track-length">Underground Track Length (km)</label>
+                            <input type="number" id="underground-track-length" value="5" min="0" step="0.1">
+                        </div>
+                        <div class="form-group">
+                            <label for="underground-track-cost">Underground Track Cost (Lakhs per km)</label>
+                            <input type="number" id="underground-track-cost" value="2500" min="0">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h3>Stations</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="standard-stations">Number of Standard Stations</label>
+                            <input type="number" id="standard-stations" value="8" min="0">
+                        </div>
+                        <div class="form-group">
+                            <label for="standard-station-cost">Standard Station Cost (Lakhs each)</label>
+                            <input type="number" id="standard-station-cost" value="2500" min="0">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="elevated-stations">Number of Elevated Stations</label>
+                            <input type="number" id="elevated-stations" value="4" min="0">
+                        </div>
+                        <div class="form-group">
+                            <label for="elevated-station-cost">Elevated Station Cost (Lakhs each)</label>
+                            <input type="number" id="elevated-station-cost" value="3500" min="0">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="underground-stations">Number of Underground Stations</label>
+                            <input type="number" id="underground-stations" value="2" min="0">
+                        </div>
+                        <div class="form-group">
+                            <label for="underground-station-cost">Underground Station Cost (Lakhs each)</label>
+                            <input type="number" id="underground-station-cost" value="6000" min="0">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h3>Additional Infrastructure</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="bridges">Number of Major Bridges</label>
+                            <input type="number" id="bridges" value="3" min="0">
+                        </div>
+                        <div class="form-group">
+                            <label for="bridge-cost">Average Bridge Cost (Lakhs each)</label>
+                            <input type="number" id="bridge-cost" value="1200" min="0">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="level-crossings">Number of Level Crossings</label>
+                            <input type="number" id="level-crossings" value="5" min="0">
+                        </div>
+                        <div class="form-group">
+                            <label for="crossing-cost">Level Crossing Cost (Lakhs each)</label>
+                            <input type="number" id="crossing-cost" value="150" min="0">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="depots">Number of Maintenance Depots</label>
+                            <input type="number" id="depots" value="1" min="0">
+                        </div>
+                        <div class="form-group">
+                            <label for="depot-cost">Depot Cost (Lakhs each)</label>
+                            <input type="number" id="depot-cost" value="5000" min="0">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h3>Land & Other Costs</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="land-acquisition">Land Acquisition Cost (Lakhs)</label>
+                            <input type="number" id="land-acquisition" value="75000" min="0">
+                        </div>
+                        <div class="form-group">
+                            <label for="signaling-cost">Signaling & Communications (Lakhs)</label>
+                            <input type="number" id="signaling-cost" value="35000" min="0">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="electrification">Electrification Cost (Lakhs)</label>
+                            <input type="number" id="electrification" value="22000" min="0">
+                        </div>
+                        <div class="form-group">
+                            <label for="contingency">Contingency (%)</label>
+                            <input type="number" id="contingency" value="15" min="0" max="100">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="project-management">Project Management Cost (%)</label>
+                            <input type="number" id="project-management" value="8" min="0" max="100">
+                        </div>
+                        <div class="form-group">
+                            <label for="inflation-rate">Inflation Rate (%)</label>
+                            <input type="number" id="inflation-rate" value="5" min="0" max="100">
+                        </div>
+                    </div>
+                </div>
+
+                <button id="calculate-btn" class="btn btn-block">Calculate Total Cost</button>
+            </div>
+
+            <div class="cost-summary">
+                <h3>Cost Summary</h3>
+                <div class="result-section">
+                    <div class="cost-item">
+                        <span class="cost-label">Track Infrastructure</span>
+                        <span class="cost-value">₹782.00 Cr</span>
+                    </div>
+                    <div class="cost-item">
+                        <span class="cost-label">Station Development</span>
+                        <span class="cost-value">₹344.00 Cr</span>
+                    </div>
+                    <div class="cost-item">
+                        <span class="cost-label">Bridges & Crossings</span>
+                        <span class="cost-value">₹43.50 Cr</span>
+                    </div>
+                    <div class="cost-item">
+                        <span class="cost-label">Depots & Maintenance</span>
+                        <span class="cost-value">₹50.00 Cr</span>
+                    </div>
+                    <div class="cost-item">
+                        <span class="cost-label">Land Acquisition</span>
+                        <span class="cost-value">₹750.00 Cr</span>
+                    </div>
+                    <div class="cost-item">
+                        <span class="cost-label">Signaling & Comms</span>
+                        <span class="cost-value">₹350.00 Cr</span>
+                    </div>
+                    <div class="cost-item">
+                        <span class="cost-label">Electrification</span>
+                        <span class="cost-value">₹220.00 Cr</span>
+                    </div>
+                    <div class="cost-item">
+                        <span class="cost-label">Subtotal</span>
+                        <span class="cost-value">₹2,539.50 Cr</span>
+                    </div>
+                    <div class="cost-item">
+                        <span class="cost-label">Project Management (8%)</span>
+                        <span class="cost-value">₹203.16 Cr</span>
+                    </div>
+                    <div class="cost-item">
+                        <span class="cost-label">Contingency (15%)</span>
+                        <span class="cost-value">₹380.93 Cr</span>
+                    </div>
+                    <div class="cost-item">
+                        <span class="cost-label">Inflation Adjustment</span>
+                        <span class="cost-value">₹156.18 Cr</span>
+                    </div>
+                </div>
+
+                <div class="total-cost">
+                    Total Estimated Cost: ₹3,279.77 Cr
+                </div>
+
+                <div style="margin-top: 2rem; text-align: center;">
+                    <button class="btn btn-secondary" style="margin-right: 0.5rem;">Save Estimate</button>
+                    <button class="btn">Generate Report</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="chart-container">
+            <div class="chart-card">
+                <div class="chart-title">Cost Breakdown</div>
+                <svg width="100%" height="250" viewBox="0 0 350 250">
+                    <!-- Simulated pie chart -->
+                    <circle cx="175" cy="125" r="100" fill="#f0f4f8" stroke="#ddd" />
+
+                    <!-- Pie segments -->
+                    <path d="M175,125 L175,25 A100,100 0 0,1 258,175 z" fill="#1a4789" />
+                    <path d="M175,125 L258,175 A100,100 0 0,1 175,225 z" fill="#4a86e8" />
+                    <path d="M175,125 L175,225 A100,100 0 0,1 92,175 z" fill="#ff6b35" />
+                    <path d="M175,125 L92,175 A100,100 0 0,1 175,25 z" fill="#28a745" />
+
+                    <!-- Legend -->
+                    <circle cx="50" cy="200" r="6" fill="#1a4789" />
+                    <text x="65" y="203" font-size="12">Track (23.8%)</text>
+
+                    <circle cx="150" cy="200" r="6" fill="#4a86e8" />
+                    <text x="165" y="203" font-size="12">Stations (10.5%)</text>
+
+                    <circle cx="50" cy="220" r="6" fill="#ff6b35" />
+                    <text x="65" y="223" font-size="12">Land (22.9%)</text>
+
+                    <circle cx="150" cy="220" r="6" fill="#28a745" />
+                    <text x="165" y="223" font-size="12">Other (42.8%)</text>
+                </svg>
+            </div>
+
+            <div class="chart-card">
+                <div class="chart-title">Phase-wise Distribution</div>
+                <svg width="100%" height="250" viewBox="0 0 350 250">
+                    <!-- Simulated bar chart -->
+                    <!-- Axes -->
+                    <line x1="40" y1="200" x2="330" y2="200" stroke="#333" stroke-width="2" />
+                    <line x1="40" y1="30" x2="40" y2="200" stroke="#333" stroke-width="2" />
+
+                    <!-- Bars -->
+                    <rect x="70" y="80" width="60" height="120" fill="#1a4789" />
+                    <rect x="150" y="50" width="60" height="150" fill="#1a4789" />
+                    <rect x="230" y="100" width="60" height="100" fill="#1a4789" />
+
+                    <!-- Labels -->
+                    <text x="100" y="220" font-size="12" text-anchor="middle">Phase 1</text>
+                    <text x="180" y="220" font-size="12" text-anchor="middle">Phase 2</text>
+                    <text x="260" y="220" font-size="12" text-anchor="middle">Phase 3</text>
+
+                    <text x="100" y="70" font-size="10" text-anchor="middle" fill="#fff">₹1,050 Cr</text>
+                    <text x="180" y="40" font-size="10" text-anchor="middle" fill="#fff">₹1,312 Cr</text>
+                    <text x="260" y="90" font-size="10" text-anchor="middle" fill="#fff">₹875 Cr</text>
+
+                    <!-- Y-axis labels -->
+                    <text x="35" y="200" font-size="10" text-anchor="end">0</text>
+                    <text x="35" y="150" font-size="10" text-anchor="end">500 Cr</text>
+                    <text x="35" y="100" font-size="10" text-anchor="end">1,000 Cr</text>
+                    <text x="35" y="50" font-size="10" text-anchor="end">1,500 Cr</text>
+                </svg>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Varanasi Railway Project</h3>
+                    <p>Civil Engineering Department,</p>
+                    <p>Indian Institute Of Technology (BHU), Varanasi, Uttar Pradesh, 221005</p>
+                </div>
+
+                <div class="footer-section" style="display: flex; justify-content: center;">
+                    <div class="profile-card"
+                        style="background-color: transparent; box-shadow: none; max-width: 300px; margin: 0;">
+                        <div class="profile-photo-container"
+                            style="width: 150px; height: 150px; background-color: #fff;">
+                            <!-- Using a placeholder image since the URL was incorrect -->
+                            <img class="profile-photo"
+                                src="C:\Users\ritiw\OneDrive\Desktop\Railway Construction Cost Estimation\mkp.jpg"
+                                alt="Dr. Mahendra Kumar Pal">
+                            <!-- If you have the actual image file, use this instead: -->
+                            <!-- <img class="profile-photo" src="path/to/your/image.jpg" alt="Dr. Mahendra Kumar Pal"> -->
+                        </div>
+                        <h1 class="profile-name" style="color: #fff; font-size: 24px;">Dr. Mahendra Kumar Pal</h1>
+                        <p class="profile-title" style="color: rgba(255,255,255,0.9); font-size: 16px;">Assistant
+                            Professor
+                        </p>
+                        <p class="profile-department" style="color: rgba(255,255,255,0.8); font-size: 14px;">Department
+                            of
+                            Civil Engg., IIT(BHU)</p>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <p>Email: mahendra.civ[at]iitbhu.ac.in</p>
+                    <p>Phone: +91-542-716-5297</p>
+                    <p>Address: Civil Dept. IIT BHU, Varanasi</p>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2025 Varanasi Railway Development Project. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('calculate-btn').addEventListener('click', function () {
+            // Get all input values
+            // Track Infrastructure
+            const standardTrackLength = parseFloat(document.getElementById('standard-track-length').value) || 0;
+            const standardTrackCost = parseFloat(document.getElementById('standard-track-cost').value) || 0;
+            const elevatedTrackLength = parseFloat(document.getElementById('elevated-track-length').value) || 0;
+            const elevatedTrackCost = parseFloat(document.getElementById('elevated-track-cost').value) || 0;
+            const undergroundTrackLength = parseFloat(document.getElementById('underground-track-length').value) || 0;
+            const undergroundTrackCost = parseFloat(document.getElementById('underground-track-cost').value) || 0;
+
+            // Stations
+            const standardStations = parseInt(document.getElementById('standard-stations').value) || 0;
+            const standardStationCost = parseFloat(document.getElementById('standard-station-cost').value) || 0;
+            const elevatedStations = parseInt(document.getElementById('elevated-stations').value) || 0;
+            const elevatedStationCost = parseFloat(document.getElementById('elevated-station-cost').value) || 0;
+            const undergroundStations = parseInt(document.getElementById('underground-stations').value) || 0;
+            const undergroundStationCost = parseFloat(document.getElementById('underground-station-cost').value) || 0;
+
+            // Additional Infrastructure
+            const bridges = parseInt(document.getElementById('bridges').value) || 0;
+            const bridgeCost = parseFloat(document.getElementById('bridge-cost').value) || 0;
+            const levelCrossings = parseInt(document.getElementById('level-crossings').value) || 0;
+            const crossingCost = parseFloat(document.getElementById('crossing-cost').value) || 0;
+            const depots = parseInt(document.getElementById('depots').value) || 0;
+            const depotCost = parseFloat(document.getElementById('depot-cost').value) || 0;
+
+            // Land & Other Costs
+            const landAcquisition = parseFloat(document.getElementById('land-acquisition').value) || 0;
+            const signalingCost = parseFloat(document.getElementById('signaling-cost').value) || 0;
+            const electrificationCost = parseFloat(document.getElementById('electrification').value) || 0;
+            const contingencyRate = parseFloat(document.getElementById('contingency').value) || 0;
+            const projectManagementRate = parseFloat(document.getElementById('project-management').value) || 0;
+            const inflationRate = parseFloat(document.getElementById('inflation-rate').value) || 0;
+
+            // Calculate costs in lakhs
+            const standardTrackTotal = standardTrackLength * standardTrackCost;
+            const elevatedTrackTotal = elevatedTrackLength * elevatedTrackCost;
+            const undergroundTrackTotal = undergroundTrackLength * undergroundTrackCost;
+            const trackInfrastructureTotal = standardTrackTotal + elevatedTrackTotal + undergroundTrackTotal;
+
+            const standardStationsTotal = standardStations * standardStationCost;
+            const elevatedStationsTotal = elevatedStations * elevatedStationCost;
+            const undergroundStationsTotal = undergroundStations * undergroundStationCost;
+            const stationDevelopmentTotal = standardStationsTotal + elevatedStationsTotal + undergroundStationsTotal;
+
+            const bridgesTotal = bridges * bridgeCost;
+            const levelCrossingsTotal = levelCrossings * crossingCost;
+            const bridgesCrossingsTotal = bridgesTotal + levelCrossingsTotal;
+
+            const depotsTotal = depots * depotCost;
+
+            // Calculate subtotal
+            const subtotal = trackInfrastructureTotal + stationDevelopmentTotal +
+                bridgesCrossingsTotal + depotsTotal + landAcquisition +
+                signalingCost + electrificationCost;
+
+            // Calculate additional costs
+            const projectManagement = subtotal * (projectManagementRate / 100);
+            const contingency = subtotal * (contingencyRate / 100);
+            const inflationAdjustment = subtotal * (inflationRate / 100);
+
+            // Calculate total
+            const totalCost = subtotal + projectManagement + contingency + inflationAdjustment;
+
+            // Convert lakhs to crores for display
+            const trackInfrastructureCr = (trackInfrastructureTotal / 100).toFixed(2);
+            const stationDevelopmentCr = (stationDevelopmentTotal / 100).toFixed(2);
+            const bridgesCrossingsCr = (bridgesCrossingsTotal / 100).toFixed(2);
+            const depotsCr = (depotsTotal / 100).toFixed(2);
+            const landAcquisitionCr = (landAcquisition / 100).toFixed(2);
+            const signalingCostCr = (signalingCost / 100).toFixed(2);
+            const electrificationCostCr = (electrificationCost / 100).toFixed(2);
+            const subtotalCr = (subtotal / 100).toFixed(2);
+            const projectManagementCr = (projectManagement / 100).toFixed(2);
+            const contingencyCr = (contingency / 100).toFixed(2);
+            const inflationAdjustmentCr = (inflationAdjustment / 100).toFixed(2);
+            const totalCostCr = (totalCost / 100).toFixed(2);
+
+            // Update the cost summary
+            document.querySelectorAll('.cost-item')[0].innerHTML =
+                `<span class="cost-label">Track Infrastructure</span>
+                <span class="cost-value">₹${trackInfrastructureCr} Cr</span>`;
+
+            document.querySelectorAll('.cost-item')[1].innerHTML =
+                `<span class="cost-label">Station Development</span>
+                <span class="cost-value">₹${stationDevelopmentCr} Cr</span>`;
+
+            document.querySelectorAll('.cost-item')[2].innerHTML =
+                `<span class="cost-label">Bridges & Crossings</span>
+                <span class="cost-value">₹${bridgesCrossingsCr} Cr</span>`;
+
+            document.querySelectorAll('.cost-item')[3].innerHTML =
+                `<span class="cost-label">Depots & Maintenance</span>
+                <span class="cost-value">₹${depotsCr} Cr</span>`;
+
+            document.querySelectorAll('.cost-item')[4].innerHTML =
+                `<span class="cost-label">Land Acquisition</span>
+                <span class="cost-value">₹${landAcquisitionCr} Cr</span>`;
+
+            document.querySelectorAll('.cost-item')[5].innerHTML =
+                `<span class="cost-label">Signaling & Comms</span>
+                <span class="cost-value">₹${signalingCostCr} Cr</span>`;
+
+            document.querySelectorAll('.cost-item')[6].innerHTML =
+                `<span class="cost-label">Electrification</span>
+                <span class="cost-value">₹${electrificationCostCr} Cr</span>`;
+
+            document.querySelectorAll('.cost-item')[7].innerHTML =
+                `<span class="cost-label">Subtotal</span>
+                <span class="cost-value">₹${subtotalCr} Cr</span>`;
+
+            document.querySelectorAll('.cost-item')[8].innerHTML =
+                `<span class="cost-label">Project Management (${projectManagementRate}%)</span>
+                <span class="cost-value">₹${projectManagementCr} Cr</span>`;
+
+            document.querySelectorAll('.cost-item')[9].innerHTML =
+                `<span class="cost-label">Contingency (${contingencyRate}%)</span>
+                <span class="cost-value">₹${contingencyCr} Cr</span>`;
+
+            document.querySelectorAll('.cost-item')[10].innerHTML =
+                `<span class="cost-label">Inflation Adjustment</span>
+                <span class="cost-value">₹${inflationAdjustmentCr} Cr</span>`;
+
+            // Update total cost
+            document.querySelector('.total-cost').innerHTML =
+                `Total Estimated Cost: ₹${totalCostCr} Cr`;
+
+            // Update pie chart (simplified for example)
+            updatePieChart(trackInfrastructureTotal, stationDevelopmentTotal, landAcquisition,
+                subtotal - trackInfrastructureTotal - stationDevelopmentTotal - landAcquisition);
+        });
+
+        function updatePieChart(track, stations, land, other) {
+            const total = track + stations + land + other;
+
+            // Calculate percentages
+            const trackPercent = ((track / total) * 100).toFixed(1);
+            const stationsPercent = ((stations / total) * 100).toFixed(1);
+            const landPercent = ((land / total) * 100).toFixed(1);
+            const otherPercent = ((other / total) * 100).toFixed(1);
+
+            // Update legend text
+            const legendTexts = document.querySelectorAll('.chart-card text');
+            legendTexts[4].textContent = `Track (${trackPercent}%)`;
+            legendTexts[5].textContent = `Stations (${stationsPercent}%)`;
+            legendTexts[6].textContent = `Land (${landPercent}%)`;
+            legendTexts[7].textContent = `Other (${otherPercent}%)`;
+
+            // In a real application, you would update the actual pie chart segments
+            // This would require more complex SVG manipulation or using a chart library
+        }
+
+        // Phase button selection
+        const phaseButtons = document.querySelectorAll('.phase-btn');
+        phaseButtons.forEach(button => {
+            button.addEventListener('click', function () {
+                phaseButtons.forEach(btn => btn.classList.remove('active'));
+                this.classList.add('active');
+
+                // In a real application, this would load different phase data
+                // For this example, we'll just simulate different phases
+                if (this.textContent === 'Phase 1') {
+                    document.getElementById('standard-track-length').value = '10';
+                    document.getElementById('elevated-track-length').value = '5';
+                    document.getElementById('underground-track-length').value = '2';
+                    document.getElementById('standard-stations').value = '3';
+                    document.getElementById('elevated-stations').value = '2';
+                    document.getElementById('underground-stations').value = '1';
+                    document.getElementById('land-acquisition').value = '25000';
+                } else if (this.textContent === 'Phase 2') {
+                    document.getElementById('standard-track-length').value = '12';
+                    document.getElementById('elevated-track-length').value = '4';
+                    document.getElementById('underground-track-length').value = '2';
+                    document.getElementById('standard-stations').value = '3';
+                    document.getElementById('elevated-stations').value = '1';
+                    document.getElementById('underground-stations').value = '1';
+                    document.getElementById('land-acquisition').value = '30000';
+                } else if (this.textContent === 'Phase 3') {
+                    document.getElementById('standard-track-length').value = '6';
+                    document.getElementById('elevated-track-length').value = '3';
+                    document.getElementById('underground-track-length').value = '1';
+                    document.getElementById('standard-stations').value = '2';
+                    document.getElementById('elevated-stations').value = '1';
+                    document.getElementById('underground-stations').value = '0';
+                    document.getElementById('land-acquisition').value = '20000';
+                } else {
+                    // All Phases
+                    document.getElementById('standard-track-length').value = '28';
+                    document.getElementById('elevated-track-length').value = '12';
+                    document.getElementById('underground-track-length').value = '5';
+                    document.getElementById('standard-stations').value = '8';
+                    document.getElementById('elevated-stations').value = '4';
+                    document.getElementById('underground-stations').value = '2';
+                    document.getElementById('land-acquisition').value = '75000';
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
